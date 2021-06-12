@@ -95,9 +95,7 @@ namespace CSharpBasics
     {
         public static void Main(string[] args)
         {
-            Basic.ValueTypeDetails();
-            Boolean b = false;
-            WriteLine(sizeof(int));
+            Basic.ValueTypeDetails();           
             ReadLine();
         }
     }
