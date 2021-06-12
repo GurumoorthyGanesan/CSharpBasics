@@ -87,7 +87,13 @@ namespace CSharpBasics
             WriteLine("NOTE : bool type inconsistency. sizeof(bool) returns 1, but Marshal.SizeOf(default(bool)) returns 4.");
             WriteLine("NOTE : struct and enum has no predefined value, so can't use with sizeof operator..");
             WriteLine("NOTE : char has MaxValue and MinValue but not sure where that would be useful. MaxValue = '\\uffff'. MinValue = '\\0'");
-            
+
+            //Study Notes
+            //===============================================
+            //Reference
+            //byte[] dataBytes = BitConverter.GetBytes(x);
+            //int d = dataBytes.Length;
+            //Marshal.SizeOf https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.marshal.sizeof?view=net-5.0
         }
     }
 
