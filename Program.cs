@@ -148,9 +148,23 @@ namespace CSharpBasics
             
             foreach(var attrib in attribs)
             {
-                var actualAttrib = attrib as SimpleClassDetail;
-                WriteLine($"Output from attribute : {actualAttrib.Name} {actualAttrib.Functionality}");
+                if(attrib is SimpleClassDetail)
+                {
+                    var actualAttrib =  (SimpleClassDetail)attrib;
+                    WriteLine($"Output from attribute : {actualAttrib.Name} | {actualAttrib.Functionality}");
+                }
+                
             }
+
+            WriteLine("\n");
+            var typeDetailsOne = SimpleClassDetail.GetTypeDetails(simpleConcat.GetType());
+            WriteLine($"Using object.GetType() : {typeDetailsOne}");
+            WriteLine("\n");
+            var typeDetailsTwo = SimpleClassDetail.GetTypeDetails(typeof(SimpleConcatClass));
+            WriteLine($"Using typeof(classname) : {typeDetailsTwo}");
+            WriteLine("\n");
+            WriteLine("NOTE : typeof is an operated used to determain type of a class, never a variable and is a compile-time thing.");
+            WriteLine("NOTE : GetType() is applied to get type of individual objects at run-time.");
 
             /* 
             
@@ -158,7 +172,18 @@ namespace CSharpBasics
             ===================
 
             Output from class     : .NET Programming
-            Output from attribute : SimpleConcatClass Provides simple concatenation functionality.
+            Output from attribute : SimpleConcatClass | Provides simple concatenation functionality.
+
+            Using object.GetType() :
+            Output from static attribute method(codevariation_one) : SimpleConcatClass | Provides simple concatenation functionality.
+            Output from static attribute method(codevariation_two) : SimpleConcatClass | Provides simple concatenation functionality.
+
+            Using typeof(classname) :
+            Output from static attribute method(codevariation_one) : SimpleConcatClass | Provides simple concatenation functionality.
+            Output from static attribute method(codevariation_two) : SimpleConcatClass | Provides simple concatenation functionality.
+
+            NOTE : typeof is an operated used to determain type of a class, never a variable and is a compile-time thing.
+            NOTE : GetType() is applied to get type of individual objects at run-time.
 
             */
         }
@@ -170,7 +195,7 @@ namespace CSharpBasics
         public static void Main(string[] args)
         {
             Basic.ValueTypeDetailAnalysis();
-            WriteLine("");
+            WriteLine("\n");
             Basic.AttributesAnalysis();
             ReadLine();
         }
