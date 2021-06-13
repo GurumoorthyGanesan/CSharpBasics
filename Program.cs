@@ -23,8 +23,8 @@ namespace CSharpBasics
                 LoadAllTypeNames();
             }
             this.type = type.GetType();
-            this.AliasName = typeNameRepo[(this.type.FullName)];
-            this.TypeName = type.GetType().FullName;
+            this.TypeName = this.type.FullName;
+            this.AliasName = typeNameRepo[this.TypeName];
             this.TypeSize = Marshal.SizeOf((T)type).ToString();
             if (!this.AliasName.Equals("bool"))
             {
