@@ -89,11 +89,39 @@ namespace CSharpBasics
             WriteLine("NOTE : char has MaxValue and MinValue but not sure where that would be useful. MaxValue = '\\uffff'. MinValue = '\\0'");
 
             //Study Notes
-            //===============================================
+            //================================================
             //Reference
             //byte[] dataBytes = BitConverter.GetBytes(x);
             //int d = dataBytes.Length;
             //Marshal.SizeOf https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.marshal.sizeof?view=net-5.0
+
+            //OUTPUT
+            //================================================
+            /*
+             
+            Value Type Details
+            ==================
+
+            AliasName : bool        TypeName : System.Boolean       TypeSize : 4    Min :           Max :
+            AliasName : char        TypeName : System.Char          TypeSize : 1    Min :           Max : ?
+            AliasName : sbyte       TypeName : System.SByte         TypeSize : 1    Min : -128      Max : 127
+            AliasName : byte        TypeName : System.Byte          TypeSize : 1    Min : 0         Max : 255
+            AliasName : short       TypeName : System.Int16         TypeSize : 2    Min : -32768    Max : 32767
+            AliasName : ushort      TypeName : System.UInt16        TypeSize : 2    Min : 0         Max : 65535
+            AliasName : int         TypeName : System.Int32         TypeSize : 4    Min : -2147483648       Max : 2147483647
+            AliasName : uint        TypeName : System.UInt32        TypeSize : 4    Min : 0         Max : 4294967295
+            AliasName : float       TypeName : System.Single        TypeSize : 4    Min : -3.402823E+38     Max : 3.402823E+38
+            AliasName : double      TypeName : System.Double        TypeSize : 8    Min : -1.79769313486232E+308    Max : 1.79769313486232E+308
+            AliasName : long        TypeName : System.Int64         TypeSize : 8    Min : -9223372036854775808      Max : 9223372036854775807
+            AliasName : ulong       TypeName : System.UInt64        TypeSize : 8    Min : 0         Max : 18446744073709551615
+            AliasName : decimal     TypeName : System.Decimal       TypeSize : 16   Min : -79228162514264337593543950335    Max : 79228162514264337593543950335
+
+            NOTE : bool data type doesn't have MaxValue, MinValue fields.
+            NOTE : bool type inconsistency. sizeof(bool) returns 1, but Marshal.SizeOf(default(bool)) returns 4.
+            NOTE : struct and enum has no predefined value, so can't use with sizeof operator..
+            NOTE : char has MaxValue and MinValue but not sure where that would be useful. MaxValue = '\uffff'. MinValue = '\0'
+
+            */
         }
     }
 
