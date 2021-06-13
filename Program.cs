@@ -51,12 +51,20 @@ namespace CSharpBasics
         }
     }
 
+    [SimpleClassDetail(Name = "SimpleConcatClass", Functionality ="Provides simple concatenation functionality.")]
+    public class SimpleConcatClass
+    {
+        public string FirstString { get; set; }
+        public string SecondString { get; set; }
+        public string FullString => $"{FirstString} {SecondString}";
+    }
+
     static class Basic
     {
-        public static void ValueTypeDetails()
+        public static void ValueTypeDetailAnalysis()
         {
-            WriteLine("Value Type Details");
-            WriteLine("==================");
+            WriteLine("ValueType Detail Analysis");
+            WriteLine("=========================");
             WriteLine();
 
             List<object> typelist = new List<object>();
@@ -123,13 +131,47 @@ namespace CSharpBasics
 
             */
         }
+
+        public static void AttributesAnalysis()
+        {
+            WriteLine("Attributes Analysis");
+            WriteLine("===================");
+            WriteLine();
+
+            SimpleConcatClass simpleConcat = new SimpleConcatClass();
+            simpleConcat.FirstString = ".NET";
+            simpleConcat.SecondString = "Programming";
+
+            WriteLine($"Output from class     : {simpleConcat.FullString}");
+
+            var attribs = simpleConcat.GetType().GetCustomAttributes(false);
+            
+            foreach(var attrib in attribs)
+            {
+                var actualAttrib = attrib as SimpleClassDetail;
+                WriteLine($"Output from attribute : {actualAttrib.Name} {actualAttrib.Functionality}");
+            }
+
+            /* 
+            
+            Attributes Analysis
+            ===================
+
+            Output from class     : .NET Programming
+            Output from attribute : SimpleConcatClass Provides simple concatenation functionality.
+
+            */
+        }
     }
 
+    [CLSCompliant(true)]
     class Program
     {
         public static void Main(string[] args)
         {
-            Basic.ValueTypeDetails();           
+            Basic.ValueTypeDetailAnalysis();
+            WriteLine("");
+            Basic.AttributesAnalysis();
             ReadLine();
         }
     }
